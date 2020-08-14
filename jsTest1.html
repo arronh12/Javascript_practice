@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="design_script.js"></script>
+	</head>
+	<body onload="get_started()">
+		<div id="main" class="container-fluid">
+			<div class="well">
+				<h1 id="head"></h1>
+				<h2 id="name"></h2>
+				<h3 id="bio_header"></h3>
+				<p id="bio"></p>
+				
+				<script src="demo_script_src.js"></script>
+
+				<button class="btn btn-primary" onclick="studentDetails('Arron', 'dfbhdbdhbfhdbfhdbfhdb jfbdjbfdjbf jdfdjfbdjbfjdb')">Arron</button>	
+				<button class="btn btn-primary" onclick="studentDetails('Dean', 'djfbdfhbdhhdfbd dfbhdbhdbhfd fdhjdfjdhjhfjd')">Dean</button>	
+				<button class="btn btn-primary" onclick="studentDetails('Kevin', 'hfbfdhbfd jdfbhfdj ddd dddhdhhd dddd')">Kevin</button>
+				
+				<button class="btn btn-primary pull-right" onclick="alertbox()">Current Student</button>
+				<div class="student_add_input">
+					<input id="student_add" type="text">
+					<button class="btn btn-primary" type="button" onclick="studentDbAdd()">Add Student</button>
+				</div>
+			</div>
+			<div class="well">
+				<h2 id="names_count"></h2>
+				<p id="list"></p>
+				<button class="btn btn-primary" onclick="clear_list()">Clear Names</button>
+			</div>
+			<div class="well">
+				<h2>Time and Date</h2>
+				<div class="row">
+					<div class="col-sm-4" style="background-color:lavender;"><h4 id="c_date"></h4></div>
+					<div class="col-sm-4" style="background-color:lavenderblush;"><h4 id="txt"></h4></div>
+					<div class="col-sm-4" style="background-color:lavender;"><h4 id="printed_day"></h4></div>
+			    </div>
+			</div>
+		</div>
+	</body>
+</html>
