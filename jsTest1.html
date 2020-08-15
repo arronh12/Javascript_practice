@@ -16,15 +16,31 @@
 				<h3 id="bio_header"></h3>
 				<p id="bio"></p>
 				
-				<script src="demo_script_src.js"></script>
-
-				<button class="btn btn-primary" onclick="studentDetails('Arron', 'dfbhdbdhbfhdbfhdbfhdb jfbdjbfdjbf jdfdjfbdjbfjdb')">Arron</button>	
-				<button class="btn btn-primary" onclick="studentDetails('Dean', 'djfbdfhbdhhdfbd dfbhdbhdbhfd fdhjdfjdhjhfjd')">Dean</button>	
-				<button class="btn btn-primary" onclick="studentDetails('Kevin', 'hfbfdhbfd jdfbhfdj ddd dddhdhhd dddd')">Kevin</button>
-				
 				<button class="btn btn-primary pull-right" onclick="alertbox()">Current Student</button>
+				<h3>Student Form</h3>
 				<div class="student_add_input">
-					<input id="student_add" type="text">
+					<label for="student_add">Student Name:</label>
+					<input id="student_add" type="text" placeholder="Add student name">
+					<br>
+					<label for="dob_add">Date of Birth:</label>
+					<input type="date"  id="dob_add" name="dob_add">
+					<br>
+					<br>
+					<label for="course_add">Course:</label>
+					<input type="text" id="course_add" placeholder="add course name">
+					<br>
+					<label>course year:</label>
+					<select id = "year_list_add">
+					  <option value = "1">year one</option>
+					  <option value = "2">year two</option>
+					  <option value = "3">year three</option>
+					  <option value = "4">year four</option>
+					  <option value = "5">year five - Masters</option>
+					</select>
+					<br>
+					<label>Student details</label>
+					<textarea rows="2" cols="25" id="notes_add" placeholder="Add student details"></textarea>
+					<br>
 					<button class="btn btn-primary" type="button" onclick="studentDbAdd()">Add Student</button>
 				</div>
 			</div>
@@ -32,6 +48,8 @@
 				<h2 id="names_count"></h2>
 				<p id="list"></p>
 				<button class="btn btn-primary" onclick="clear_list()">Clear Names</button>
+				<button class="btn btn-primary" onclick="displayAllList()">Display All</button>
+				
 			</div>
 			<div class="well">
 				<h2>Time and Date</h2>

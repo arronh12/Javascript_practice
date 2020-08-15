@@ -1,15 +1,46 @@
             
 			var current_name; // current displayed student.
-			var name_list = []; // list of student names.
+			var student_list = new Array();
 			var d = new Date;
 
 			// code to run when page first loads.
 			function get_started(){
-				document.getElementById("names_count").innerHTML = "Amount of Students: " + name_list.length;
+				document.getElementById("names_count").innerHTML = "Amount of Students: " + student_list.length;
 				document.getElementById("c_date").innerHTML = "Date: " + date_maker();
 				dayMaker();
 				startTime();
 			}
+			
+			// adds student details to list
+			function studentDbAdd(){
+				var name_inputted = document.getElementById("student_add").value;
+				var dob_inputted = document.getElementById("dob_add").value;
+				var course_inputted = document.getElementById("course_add").value;
+				var year_list_inputted = document.getElementById("year_list_add").value;
+				var notes_inputted = document.getElementById("notes add").value;
+				student_c = new Student(name_inputted, dob_inputted, course_inputted, year_list_inputted, notes_inputted);
+				
+				student_list.push(student_c);
+				document.getElementById("names_count").innerHTML = "Amount of Students: " + student_list.length;
+				clearFormInputs();	
+			}// function to clear student details form.
+			function clearFormInputs(){
+				document.getElementById("student_add").innerHTML = "";
+				document.getElementById("dob_add").innerHTML = "";
+				document.getElementById("course_add").innerHTML = "";
+				document.getElementById("year_list_add").innerHTML = "";
+				document.getElementById("notes_add").innerHTML = "";	
+			}
+			
+			// display all list
+			function displayAllList(){
+				for (n in student_list) {
+					document.getElementById("head").innerHTML = "Student Details: " + n.name + n.dob
+					+ n.course + n.year + n.notes;
+				}
+
+			}
+			
 			
 			// function  to display student details of selected button.
 			function studentDetails(name, bio){
@@ -105,4 +136,17 @@
 			function checkTime(i) {
 			  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 			  return i;
+			}
+			
+			// -------------------------------------------------------------------------------------
+			// student object
+			//---------------------------------------------------------------------------------------
+			// constructor for student objects
+
+			function Student(name, dob, course, year, notes) {
+				this.name = name;
+				this.dob = dob;
+				this.course = course;
+				this.year = year;
+				this.notes = notes;
 			}
