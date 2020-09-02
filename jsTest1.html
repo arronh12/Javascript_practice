@@ -18,38 +18,41 @@
 				
 				<button class="btn btn-primary pull-right" onclick="alertbox()">Current Student</button>
 				<h3>Student Form</h3>
-				<div class="student_add_input">
-					<label for="student_add">Student Name:</label>
-					<input id="student_add" type="text" placeholder="Add student name">
-					<br>
-					<label for="dob_add">Date of Birth:</label>
-					<input type="date"  id="dob_add" name="dob_add">
-					<br>
-					<br>
-					<label for="course_add">Course:</label>
-					<input type="text" id="course_add" placeholder="add course name">
-					<br>
-					<label>course year:</label>
-					<select id = "year_list_add">
-					  <option value = "1">year one</option>
-					  <option value = "2">year two</option>
-					  <option value = "3">year three</option>
-					  <option value = "4">year four</option>
-					  <option value = "5">year five - Masters</option>
-					</select>
-					<br>
-					<label>Student details</label>
-					<textarea rows="2" cols="25" id="notes_add" placeholder="Add student details"></textarea>
-					<br>
-					<button class="btn btn-primary" type="button" onclick="studentDbAdd()">Add Student</button>
+				<div class="form-group">
+					<form onsubmit="studentDbAdd()">
+						<label for="student_add">Student Name:</label>
+						<input id="student_add" class="form-control" type="text" placeholder="Add student name" required>
+						<br>
+						<label for="dob_add">Date of Birth:</label>
+						<input type="date" class="form-control"  id="dob_add" name="dob_add" required>
+						<br>
+						<br>
+						<label for="course_add">Course:</label>
+						<input type="text" id="course_add" class="form-control" placeholder="add course name" required>
+						<br>
+						<label>course year:</label>
+						<select id = "year_list_add" class="form-control" required>
+						  <option value = "1">year one</option>
+						  <option value = "2">year two</option>
+						  <option value = "3">year three</option>
+						  <option value = "4">year four</option>
+						  <option value = "5">year five - Masters</option>
+						</select>
+						<br>
+						<label>Student details</label>
+						<textarea class="form-control" rows="2" cols="25" id="notes_add" placeholder="Add student details" required></textarea>
+						<br>
+						<input class="btn btn-primary" type="submit">
+						<input class="btn btn-primary" type="button" onclick="clearFormInputs()" value="Clear">
+					</form>
 				</div>
 			</div>
 			<div class="well">
-				<h2 id="names_count"></h2>
+				<h2 id="names_count">Amount of Students: 0</h2>
 				<p id="list"></p>
+				<p id="studentOutputList">ddddd</p>
 				<button class="btn btn-primary" onclick="clear_list()">Clear Names</button>
-				<button class="btn btn-primary" onclick="displayAllList()">Display All</button>
-				
+				<button class="btn btn-primary" onclick="displayAllList()">Display All</button>	
 			</div>
 			<div class="well">
 				<h2>Time and Date</h2>
@@ -57,6 +60,13 @@
 					<div class="col-sm-4" style="background-color:lavender;"><h4 id="c_date"></h4></div>
 					<div class="col-sm-4" style="background-color:lavenderblush;"><h4 id="txt"></h4></div>
 					<div class="col-sm-4" style="background-color:lavender;"><h4 id="printed_day"></h4></div>
+			    </div>
+			</div>
+			<div class="well">
+				<h2>Students</h2>
+				<div class="row">
+					<p id="allStudentsNames"></p>
+					<button class="btn btn-primary" onclick="go_list()">Go!</button>
 			    </div>
 			</div>
 		</div>

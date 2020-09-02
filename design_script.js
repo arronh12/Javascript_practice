@@ -1,88 +1,63 @@
             
 			var current_name; // current displayed student.
-			var student_list = new Array();
 			var d = new Date;
+			let student_list = [];
 
 			// code to run when page first loads.
-			function get_started(){
-				document.getElementById("names_count").innerHTML = "Amount of Students: " + student_list.length;
+			function get_started() {
 				document.getElementById("c_date").innerHTML = "Date: " + date_maker();
 				dayMaker();
 				startTime();
+				window.alert("Reset");
 			}
 			
 			// adds student details to list
-			function studentDbAdd(){
+			function studentDbAdd() {
 				var name_inputted = document.getElementById("student_add").value;
 				var dob_inputted = document.getElementById("dob_add").value;
 				var course_inputted = document.getElementById("course_add").value;
 				var year_list_inputted = document.getElementById("year_list_add").value;
-				var notes_inputted = document.getElementById("notes add").value;
-				student_c = new Student(name_inputted, dob_inputted, course_inputted, year_list_inputted, notes_inputted);
+				var notes_inputted = document.getElementById("notes_add").value;
 				
+				var student_c = new Student(name_inputted, dob_inputted, course_inputted, year_list_inputted, notes_inputted);
 				student_list.push(student_c);
 				document.getElementById("names_count").innerHTML = "Amount of Students: " + student_list.length;
-				clearFormInputs();	
-			}// function to clear student details form.
+			}
+
+			// function to clear student details form.
 			function clearFormInputs(){
-				document.getElementById("student_add").innerHTML = "";
-				document.getElementById("dob_add").innerHTML = "";
-				document.getElementById("course_add").innerHTML = "";
-				document.getElementById("year_list_add").innerHTML = "";
-				document.getElementById("notes_add").innerHTML = "";	
+				document.getElementById("student_add").value = "";
+				document.getElementById("dob_add").value = "";
+				document.getElementById("course_add").value = "";
+				document.getElementById("year_list_add").value = "";
+				document.getElementById("notes_add").value = '';	
+			}
+
+			function go_list() {
+				var text;
+				for(var i=0; i < student_list.length; i++){
+					text += student_list[i].sname + ", ";
+				}
+				document.getElementById("allStudentsNames").innerHTML = text;
 			}
 			
 			// display all list
 			function displayAllList(){
-				for (n in student_list) {
-					document.getElementById("head").innerHTML = "Student Details: " + n.name + n.dob
-					+ n.course + n.year + n.notes;
-				}
-
+					var text;
+					var len = student_list.length;
+					for(x in student_list){
+						text += student_list[x].name + ": ";
+					}
+					document.getElementById("studentOutputList").innerHTML = "Student Details: " + text;
+					window.alert(text);
 			}
 			
-			
-			// function  to display student details of selected button.
-			function studentDetails(name, bio){
-				document.getElementById("head").innerHTML = "Student Details";
-				document.getElementById("name").innerHTML = "Student Name: " + name;
-				document.getElementById("bio").innerHTML = bio;
-				document.getElementById("bio_header").innerHTML = "Student Bio: ";
-				
-				current_name = name;
-				if (list_check(current_name) != true){
-					name_list.push(current_name);
-				}
-				names_list_add();
-			}
 			
 			// alert to display current displayed student.
 			function alertbox(){
-				window.alert(current_name)
+				window.alert(current_name);
 			}
 			
-			// displays student names in unordered list and amount of students in db.
-			function names_list_add(){
-				var text;
-				text = "<ul>";
-				for (i=0; i<name_list.length; i++){
-					text += "<li>" + name_list[i] + "</li>";
-				}
-				text += "</ul>";
-				document.getElementById("list").innerHTML = text;
-				document.getElementById("names_count").innerHTML = "Amount of Students: " + name_list.length;
-			}
-			
-			// clears name_list db of student names, resets and clears displayed unordered list.
-			function clear_list(){
-				name_list = [];
-				names_list_add();
-			}
-			
-			// returns true if student name already in name_list db.
-			function list_check(cur_name){
-				return name_list.includes(cur_name);
-			}
 			
 			function date_maker(){
 				new_m = d.getMonth() + 1
@@ -117,6 +92,9 @@
 					break;
 				  case  6:
 					day = "Saturday";
+					break;
+				  default:
+				    day = "unknown";
 				}
 				document.getElementById("printed_day").innerHTML = "Today is " + day;
 			}
@@ -139,14 +117,58 @@
 			}
 			
 			// -------------------------------------------------------------------------------------
-			// student object
+			// student Class
 			//---------------------------------------------------------------------------------------
 			// constructor for student objects
 
-			function Student(name, dob, course, year, notes) {
+			class Student {
+				constructor(name, dob, course, year, notes) {
 				this.name = name;
 				this.dob = dob;
 				this.course = course;
 				this.year = year;
 				this.notes = notes;
+				}	
+
+				// Student class getters.
+				get sname() {
+					return this.name;
+				}
+
+				get sdob() {
+					return this.dob;
+				}
+
+				get scourse() {
+					return this.course;
+				}
+
+				get syear() {
+					return this.year;
+				}
+
+				get snotes() {
+					return this.notes;
+				}
+
+				// Student class setters.
+				set sname(x) {
+					this.name = x;
+				}
+
+				set sdob(x) {
+					this.dob = x;
+				}
+
+				set scourse(x) {
+					this.course = x;
+				}
+
+				set syear(x) {
+					this.year = x;
+				}
+
+				set snotes(x){
+					this.notes = x;
+				}
 			}
