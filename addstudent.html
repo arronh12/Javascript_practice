@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="design_script.js"></script>
+	</head>
+	<body onload="get_started()">
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Student System</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="jsTest1.html">Home</a></li>
+		      <li><a href="#">Updates</a></li>
+		      <li><a href="addstudent.html">Add Student</a></li>
+		      <li><a href="#">Profile</a></li>
+		      <li><a href="#">Admin</a></li>
+		    </ul>
+		  </div>
+		</nav>
+
+		<div id="main" class="container-fluid">
+			<div class="well">
+				
+				<h2>Student Form</h2>
+				<div class="form-group">
+					<form onsubmit="studentDbAdd()">
+						<label for="student_add">Student Name:</label>
+						<input id="student_add" class="form-control" type="text" placeholder="Add student name" required>
+						<br>
+						<label for="dob_add">Date of Birth:</label>
+						<input type="date" class="form-control"  id="dob_add" name="dob_add" required>
+						<br>
+						<br>
+						<label for="course_add">Course:</label>
+						<input type="text" id="course_add" class="form-control" placeholder="add course name" required>
+						<br>
+						<label>course year:</label>
+						<select id = "year_list_add" class="form-control" required>
+						  <option value = "1">year one</option>
+						  <option value = "2">year two</option>
+						  <option value = "3">year three</option>
+						  <option value = "4">year four</option>
+						  <option value = "5">year five - Masters</option>
+						</select>
+						<br>
+						<label>Student details</label>
+						<textarea class="form-control" rows="2" cols="25" id="notes_add" placeholder="Add student details" required></textarea>
+						<br>
+						<input class="btn btn-primary" type="submit">
+						<input class="btn btn-primary" type="button" onclick="clearFormInputs()" value="Clear">
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

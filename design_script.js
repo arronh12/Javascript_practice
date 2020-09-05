@@ -1,14 +1,14 @@
             
 			var current_name; // current displayed student.
 			var d = new Date;
-			let student_list = [];
+			var student_list = loadStudent();
 
 			// code to run when page first loads.
 			function get_started() {
 				document.getElementById("c_date").innerHTML = "Date: " + date_maker();
 				dayMaker();
 				startTime();
-				window.alert("Reset");
+				document.getElementById("names_count").innerHTML = "Amount of Students: " + student_list.length;
 			}
 			
 			// adds student details to list
@@ -21,7 +21,10 @@
 				
 				var student_c = new Student(name_inputted, dob_inputted, course_inputted, year_list_inputted, notes_inputted);
 				student_list.push(student_c);
-				document.getElementById("names_count").innerHTML = "Amount of Students: " + student_list.length;
+				saveStudent(student_list);
+				var obj = [];
+				obj = loadStudent();
+				window.alert(obj[0].name + " Added.");
 			}
 
 			// function to clear student details form.
@@ -35,8 +38,9 @@
 
 			function go_list() {
 				var text;
-				for(var i=0; i < student_list.length; i++){
-					text += student_list[i].sname + ", ";
+				var obj = loadStudent();
+				for(var i=0; i < obj.length; i++){
+					text += obj[i].name + ", ";
 				}
 				document.getElementById("allStudentsNames").innerHTML = text;
 			}
@@ -50,6 +54,21 @@
 					}
 					document.getElementById("studentOutputList").innerHTML = "Student Details: " + text;
 					window.alert(text);
+			}
+
+			// ----------------------------------------------------------------------------------------
+			// json functions
+			// -----------------------------------------------------------------------------------------
+			function saveStudent(obj) {
+				var myJSON = JSON.stringify(obj);
+				localStorage.setItem("testJSON", myJSON);
+			}
+
+			function loadStudent() {
+				var text = localStorage.getItem("testJSON")
+				var obj = JSON.parse(text);
+				student_list = obj;
+				return obj;
 			}
 			
 			
@@ -98,7 +117,7 @@
 				}
 				document.getElementById("printed_day").innerHTML = "Today is " + day;
 			}
-			
+		   
 			// displays a live updating current time.
 			function startTime() {
 			  var today = new Date();
@@ -115,6 +134,7 @@
 			  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 			  return i;
 			}
+
 			
 			// -------------------------------------------------------------------------------------
 			// student Class
